@@ -26,6 +26,7 @@ export default {
     messageContentStore: {}
   },
   mutations: {
+
     setAvator (state, avatorPath) {
       state.avatorImgPath = avatorPath
     },

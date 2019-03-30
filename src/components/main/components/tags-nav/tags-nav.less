@@ -34,7 +34,7 @@
     padding-top: 3px;
     z-index: 10;
     button{
-      padding: 6px 4px;
+      padding: 3px 4px;
       line-height: 14px;
       text-align: center;
     }
@@ -56,11 +56,15 @@
     .scroll-body{
       height: ~"calc(100% - 1px)";
       display: inline-block;
-      padding: 1px 4px 0;
+      padding: 0 4px;
       position: absolute;
       overflow: visible;
       white-space: nowrap;
       transition: left .3s ease;
+      .ivu-tag-dot{
+        height: 28px;
+        line-height: 28px;
+      }
       .ivu-tag-dot-inner{
         transition: background .2s ease;
       }
