@@ -15,24 +15,37 @@ import '@/assets/icons/iconfont.css'
 import TreeTable from 'tree-table-vue'
 import VOrgTree from 'v-org-tree'
 import 'v-org-tree/dist/v-org-tree.css'
+import iviewArea from 'iview-area'
+import VueFriendlyIframe from 'vue-friendly-iframe'
 
-import iviewArea from 'iview-area';
+import ECharts from 'vue-echarts' // 在 webpack 环境下指向 components/ECharts.vue
 
+// 手动引入 ECharts 各模块来减小打包体积
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
 
+// 如果需要配合 ECharts 扩展使用，只需要直接引入扩展包即可
+// 以 ECharts-GL 为例：
+// 需要安装依赖：npm install --save echarts-gl，并添加如下引用
+import 'echarts-gl'
+
+// 注册组件后即可使用
+Vue.component('v-chart', ECharts)
 
 // 实际打包时应该不引入mock
 /* eslint-disable */
- if (process.env.NODE_ENV !== 'production') require('@/mock')
+Vue.component('vue-friendly-iframe',VueFriendlyIframe);
+ if (process.env.NODE_ENV !== 'production') require('@/mock');
 Vue.use(iviewArea);
 Vue.use(iView, {
   i18n: (key, value) => i18n.t(key, value)
-})
-Vue.use(TreeTable)
-Vue.use(VOrgTree)
+});
+Vue.use(TreeTable);
+Vue.use(VOrgTree);
 /**
  * @description 注册admin内置插件
  */
-installPlugin(Vue)
+installPlugin(Vue);
 /**
  * @description 生产环境关掉提示
  */

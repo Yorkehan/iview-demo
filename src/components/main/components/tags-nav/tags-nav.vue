@@ -69,6 +69,7 @@ export default {
       contextMenuTop: 0,
       visible: false,
       menuList: {
+        refresh: '刷新',
         others: '关闭其他',
         all: '关闭所有'
       }
@@ -118,6 +119,8 @@ export default {
         setTimeout(() => {
           this.getTagElementByRoute(this.currentRouteObj)
         }, 100)
+      } else if (type.includes('refresh')) {
+
       }
     },
     handleClose (current) {

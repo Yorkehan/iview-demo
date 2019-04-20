@@ -17,9 +17,9 @@
     "countup": "^1.8.2",
     "cropperjs": "^1.2.2",
     "dayjs": "^1.7.7",
-    "echarts": "^4.0.4",
+    "echarts": "^4.2.1",
     "html2canvas": "^1.0.0-alpha.12",
-    "iview": "^3.2.2",
+    "iview": "^3.4.0",
     "iview-area": "^1.5.17",
     "js-cookie": "^2.2.0",
     "simplemde": "^1.11.2",
@@ -27,6 +27,7 @@
     "tree-table-vue": "^1.1.0",
     "v-org-tree": "^1.0.6",
     "vue": "^2.5.10",
+    "vue-echarts": "^4.0.1",
     "vue-i18n": "^7.8.0",
     "vue-router": "^3.0.1",
     "vuedraggable": "^2.16.0",
@@ -49,6 +50,7 @@
     "less-loader": "^4.0.5",
     "lint-staged": "^6.0.0",
     "mockjs": "^1.0.1-beta3",
+    "vue-friendly-iframe": "^0.12.0",
     "vue-template-compiler": "^2.5.13"
   },
   "browserslist": [

@@ -35,7 +35,7 @@ export default [
       title: 'Index - 主页',
       hideInMenu: true
     },
-  component: index
+    component: index
   },
   {
     path: '/',
@@ -399,6 +399,54 @@ export default [
           title: '二级-1'
         },
         component: () => import('@/view/multilevel/level-2-1.vue')
+      },
+      {
+        path: 'level_2_5',
+        name: '百度',
+        props: { url: 'https://www.baidu.com' },
+        meta: {
+          title: '百度'
+
+        },
+        component: () => import('@/view/argu-page/params.vue')
+      },
+      {
+        path: 'level_2_6',
+        name: '游民星空',
+        props: { url: 'https://www.gamersky.com/' },
+        meta: {
+          title: '游民星空'
+
+        },
+        component: () => import('@/view/argu-page/params.vue')
+      },
+      {
+        path: 'level_2_7',
+        name: '游侠网',
+        props: { url: 'http://ali213.net' },
+        meta: {
+          title: '游侠网'
+
+        },
+        component: () => import('@/view/argu-page/params.vue')
+      },
+      {
+        path: 'level_2_8',
+        name: 'element',
+        props: { url: 'http://localhost:9527/#/tree1' },
+        meta: {
+          title: 'element'
+        },
+        component: () => import('@/view/argu-page/params.vue')
+      },
+      {
+        path: 'level_2_9',
+        name: 'element1',
+        props: { url: 'http://localhost:9527/#/role1' },
+        meta: {
+          title: 'element1'
+        },
+        component: () => import('@/view/argu-page/params.vue')
       },
       {
         path: 'level_2_2',
