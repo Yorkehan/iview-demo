@@ -28,7 +28,7 @@ import 'echarts/lib/component/tooltip'
 // 以 ECharts-GL 为例：
 // 需要安装依赖：npm install --save echarts-gl，并添加如下引用
 import 'echarts-gl'
-
+import { initRouter } from '@/libs/router-util' // ①新增  引入动态菜单渲染
 // 注册组件后即可使用
 Vue.component('v-chart', ECharts)
 
@@ -66,5 +66,8 @@ new Vue({
   router,
   i18n,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  mounted() {
+    initRouter() // 新增 调用方法,动态生成路由,
+  }
 })

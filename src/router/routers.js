@@ -1,7 +1,7 @@
 import Main from '@/components/main'
 import index from '@/view/login/index.vue'
 import parentView from '@/components/parent-view'
-
+import { dynamicRouterAdd } from '@/libs/router-util' // ①添 引入加载菜单
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
  * meta: {
@@ -18,7 +18,87 @@ import parentView from '@/components/parent-view'
  * }
  */
 
-export default [
+// 不作为Main组件的子页面展示的页面单独写
+export const otherRouter = [
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      title: 'Login - 登录',
+      hideInMenu: true
+    },
+    component: () => import('@/view/login/login.vue')
+  },
+  {
+    path: '/index',
+    name: 'index',
+    meta: {
+      title: 'Index - 主页',
+      hideInMenu: true
+    },
+    component: index
+  },
+  {
+    path: '/401',
+    name: 'error_401',
+    meta: {
+      hideInMenu: true
+    },
+    component: () => import('@/view/error-page/401.vue')
+  },
+  {
+    path: '/500',
+    name: 'error_500',
+    meta: {
+      hideInMenu: true
+    },
+    component: () => import('@/view/error-page/500.vue')
+  },
+  {
+    path: '*',
+    name: 'error_404',
+    meta: {
+      hideInMenu: true
+    },
+    component: () => import('@/view/error-page/404.vue')
+  }
+]
+
+// 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在mainRouter里
+export const mainRouter = [
+  {
+    path: '/',
+    name: '_home',
+    redirect: '/home',
+    component: Main,
+    meta: {
+      hideInMenu: true,
+      notCache: true
+    },
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        meta: {
+          hideInMenu: true,
+          title: '首页',
+          notCache: true,
+          icon: 'md-home'
+        },
+        component: () => import('@/view/single-page/home')
+      }
+    ]
+  }
+]
+// 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
+export const appRouter = [...dynamicRouterAdd()]
+
+export const routes = [...otherRouter, ...mainRouter, ...appRouter]
+
+// 所有上面定义的路由都要写在下面输出
+export default routes
+
+/* export default [
   {
     path: '/login',
     name: 'login',
@@ -499,11 +579,11 @@ export default [
     component: Main,
     children: [
       {
-        path: 'params/:id',
+        path: 'params',
         name: 'params',
         meta: {
           icon: 'md-flower',
-          title: route => `{{ params }}-${route.params.id}`,
+          title: route => `${route.params.name}`,
           notCache: true,
           beforeCloseName: 'before_close_normal'
         },
@@ -545,4 +625,4 @@ export default [
     },
     component: () => import('@/view/error-page/404.vue')
   }
-]
+] */

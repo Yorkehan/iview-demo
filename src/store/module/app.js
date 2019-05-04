@@ -32,13 +32,20 @@ export default {
     homeRoute: {},
     local: localRead('local'),
     errorList: [],
-    hasReadErrorPage: false
+    hasReadErrorPage: false,
+    menuList: []
   },
   getters: {
-    menuList: (state, getters, rootState) => getMenuByRouter(routers, rootState.user.access),
+    menuList: (state, getters, rootState) => getMenuByRouter(state.menuList, rootState.user.access),
     errorCount: state => state.errorList.length
   },
   mutations: {
+    updateMenuList (state, routes) {
+      // ①添 接受前台数组，刷新菜单
+      router.addRoutes(routes) // 动态添加路由
+      state.menuList = routes
+      console.log('updateMenuList 添  menuList', state.menuList)
+    },
     setBreadCrumb (state, route) {
       state.breadCrumbList = getBreadCrumbList(route, state.homeRoute)
     },

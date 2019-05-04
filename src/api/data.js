@@ -1,4 +1,4 @@
-import {manage_axios} from '@/libs/api.request'
+import { manage_axios } from '@/libs/api.request'
 
 export const getTableData = () => {
   return manage_axios.request({
@@ -47,5 +47,11 @@ export const getTreeSelectData = () => {
   return manage_axios.request({
     url: 'get_tree_select_data',
     method: 'get'
+  })
+}
+export const getMockMenuData = () => {
+  return manage_axios.request({
+    url: 'system/menu',
+    method: 'post'
   })
 }

@@ -32,7 +32,7 @@
                   <div  style="margin-top:10px;width:350px;height:720px;overflow-y: auto">
                     <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
                       <Row>
-                        <Col  v-for="item in cityList" span="20" offset="4" style="margin-top: 20px">
+                        <Col v-for="item in cityList" span="20" offset="4" style="margin-top: 20px">
                           <Card @click.native="gg1(item.label)" class="dasd" style="height: 80px;width: 80%;background-color: #eaeaea">
                             <h1>{{item.value}}</h1>
                           </Card>
@@ -95,96 +95,95 @@
 </template>
 <script>
 
-  import HeaderBar from '../../components/main/components/header-bar/header-bar-index'
+import HeaderBar from '../../components/main/components/header-bar/header-bar-index'
+import Main from '@/components/main'
+import parentView from '@/components/parent-view'
+import User from '../../components/main/components/user'
+import router from '@/router'
+import { mapActions, mapGetters } from 'vuex'
+import { initRouter } from '@/libs/router-util' // ①新增  引入动态菜单渲染
 
-  import User from '../../components/main/components/user'
+export default {
+  name: 'index',
+  components: {
+    HeaderBar,
+    User
 
-  import {mapActions, mapGetters } from 'vuex'
-
-
-  export default {
-    name: 'index',
-    components: {
-      HeaderBar,
-      User,
-
-    },
-    data() {
-      return {
-        isFullscreen: false,
-        cityList: [
-          {
-            value: 'New York',
-            label: 'New York'
-          },
-          {
-            value: 'London',
-            label: 'London'
-          },
-          {
-            value: 'Sydney',
-            label: 'Sydney'
-          },
-          {
-            value: 'Ottawa',
-            label: 'Ottawa'
-          },
-          {
-            value: 'Paris',
-            label: 'Paris'
-          },
-          {
-            value: 'Canberra',
-            label: 'Canberra'
-          },
-          {
-            value: 'Canberra',
-            label: 'Canberra'
-          }
-          ,
-          {
-            value: 'Canberra',
-            label: 'Canberra'
-          }
-          ,
-          {
-            value: 'Canberra',
-            label: 'Canberra'
-          }
-        ],
-      }
-    },
-    methods:{
-      ...mapActions([
-        'getUnreadMessageCount'
-      ]),
-      gohome(){
-        this.$router.push({
-          name: "home"
-        })
-  }
   },
-    computed: {
-      ...mapGetters([
-        'errorCount'
-      ]),
-      userAvator() {
-        return this.$store.state.user.avatorImgPath
-      },
-
-      local() {
-        return this.$store.state.app.local
-      },
-      hasReadErrorPage() {
-        return this.$store.state.app.hasReadErrorPage
-      },
-      unreadCount() {
-        return this.$store.state.user.unreadCount
-      }
-    },
-    mounted() {
-      this.getUnreadMessageCount()
+  data () {
+    return {
+      isFullscreen: false,
+      cityList: [
+        {
+          value: 'New York',
+          label: 'New York'
+        },
+        {
+          value: 'London',
+          label: 'London'
+        },
+        {
+          value: 'Sydney',
+          label: 'Sydney'
+        },
+        {
+          value: 'Ottawa',
+          label: 'Ottawa'
+        },
+        {
+          value: 'Paris',
+          label: 'Paris'
+        },
+        {
+          value: 'Canberra',
+          label: 'Canberra'
+        },
+        {
+          value: 'Canberra',
+          label: 'Canberra'
+        },
+        {
+          value: 'Canberra',
+          label: 'Canberra'
+        },
+        {
+          value: 'Canberra',
+          label: 'Canberra'
+        }
+      ]
     }
-  }
-</script>
+  },
+  methods: {
+    ...mapActions([
+      'getUnreadMessageCount'
+    ]),
+    gohome () {
+      initRouter()
+      this.$router.push({
+        name: 'home'
+      })
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'errorCount'
+    ]),
+    userAvator () {
+      return this.$store.state.user.avatorImgPath
+    },
 
+    local () {
+      return this.$store.state.app.local
+    },
+    hasReadErrorPage () {
+      return this.$store.state.app.hasReadErrorPage
+    },
+    unreadCount () {
+      return this.$store.state.user.unreadCount
+    }
+  },
+  mounted () {
+    this.getUnreadMessageCount()
+  }
+}
+</script>
